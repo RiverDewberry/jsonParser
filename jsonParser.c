@@ -942,10 +942,10 @@ char json_isNull(json* val)
 	return (val->type & json_NULL) == json_NULL;
 }
 
-char json_isNull(json* val)
+char json_isInvalid(json* val)
 {
 	if(val == NULL)return 0;
-	return (val->type & json_NULL) == json_NULL;
+	return (val->type & json_INVALID) == json_INVALID;
 }
 
 //arraylist functions
