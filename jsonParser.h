@@ -107,4 +107,7 @@ char json_isBool(json* val);
 //checks if type is null
 char json_isNull(json* val);
 
+//checks if type is invalid
+char json_isInvalid(json* val);
+
 #endif
