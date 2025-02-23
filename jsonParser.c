@@ -942,6 +942,12 @@ char json_isNull(json* val)
 	return (val->type & json_NULL) == json_NULL;
 }
 
+char json_isNull(json* val)
+{
+	if(val == NULL)return 0;
+	return (val->type & json_NULL) == json_NULL;
+}
+
 //arraylist functions
 
 arraylist* arraylistMake(int typeSize, int arrLength)
