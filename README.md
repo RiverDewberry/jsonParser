@@ -53,3 +53,6 @@ checks if the type of a json pointer is boolean
 
 char json_isNull(json* val);
 checks if the type of a json pointer is null
+
+char json_isInvalid(json* val);
+checks if the type of a json pointer is invalid
