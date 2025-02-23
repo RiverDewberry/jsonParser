@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "jsonParser.h"
 
 //a copy of the bytes in a file
 typedef struct {
