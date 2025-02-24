@@ -1117,8 +1117,6 @@ filecopy* filecopyMakeFromFilePtr(FILE* filePtr)
 	
 	retVal->bytes[retVal->len] = 0;
 
-	fclose(filePtr);//closes the file
-
 	return retVal;
 }//makes copies of files
 
