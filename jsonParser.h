@@ -1,6 +1,7 @@
 #ifndef JSON_H
 #define JSON_H
 #include <stdio.h>
+#include <stdlib.h>
 
 //arraylist
 typedef struct {
@@ -82,6 +83,12 @@ json* json_getMember(json* val, char* memberName);
 
 //gets the boolean value of a json ptr
 char json_getBool(json* val);
+
+//gets the boolean value of a json ptr
+json* json_getArray(json* val);
+
+//gets the boolean value of a json ptr
+json* json_getObject(json* val);
 
 //gets the length of a json array
 int json_arrayLen(json* val);

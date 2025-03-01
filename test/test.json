@@ -1,0 +1,8 @@
+{
+	"test1": "hello \n world",
+	"test2": 400,
+	"test3": 432.234,
+	"test4": true,
+	"test5": null,
+	"test6": [10, 20, 35, 99]
+}

@@ -232,7 +232,7 @@ int detectJsonType(filecopy* filec, int offset)
 		case 't':
 			for(int i = 0; i < 4; i++)
 			{
-				if(filec->bytes[offset + i] != trueString[i])return json_INVALID;
+				if(filec->bytes[offset + i] != trueString[i]) return json_INVALID;
 			}
 			{
 				//checks for a valid ending character
@@ -240,7 +240,10 @@ int detectJsonType(filecopy* filec, int offset)
 				if(
 					(temp != ']') && (temp != '}') && (temp != ',') &&
 					!isWhitespace(temp) && (temp != '\0')
-				) return json_INVALID;
+				) {
+					return json_INVALID;
+				
+				}
 			}
 			return json_TRUE;
 		case 'f':
@@ -475,18 +478,19 @@ json* makeNodeTree(int type, filecopy* jsonfile, int start, int* len)
 	if((type & json_TRUE) == json_TRUE)
 	{
 		retVal->data.boolean = 1;
-		*len += 1;
+		*len = 3;
+		printf("%c ", jsonfile->bytes[start + *len]);
 	}
 
 	if((type & json_FALSE) == json_FALSE)
 	{
 		retVal->data.boolean = 0;
-		*len += 2;
+		*len = 4;
 	}
 
 	if((type & json_NULL) == json_NULL)
 	{
-		*len += 1;
+		*len = 3;
 	}
 
 	return retVal;
