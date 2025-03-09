@@ -5,7 +5,7 @@ int main(void)
 {
 	json* test = json_parseFromPath("./test.json");
 
-	printf("%x - %s\n", test->type, json_getString(json_getMember(test, "test")));
+	printf("test 1 -> %s\n", json_getString(json_getMember(test, "test1")));
 
 	printf("test 2 -> %d\n", 
 		json_getInt(json_getMember(test, "test2"))
