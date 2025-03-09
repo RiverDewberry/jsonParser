@@ -288,6 +288,8 @@ json* json_parseFromPath(char* pathToFile)
 
 	filecopy* jsonFile = filecopyMake(pathToFile);
 
+	if(jsonFile == NULL) return NULL;
+
 	int len = 0;
 
 	json* jsonNodeRoot = makeNodeTree(detectJsonType(jsonFile, 0), jsonFile, 0, &len);
@@ -693,7 +695,12 @@ int makeStringFromJson(int type, filecopy* filec, int offset, json* outVar)
 				(temp == 'r') ||
 				(temp == 't') ||
 				(temp == '/')
-			)continue;//all 2 character escape sequences
+			)
+			{
+				i++;
+				len++;
+				continue;//all 2 character escape sequences
+			}
 			
 			if(temp == 'u')
 			{
@@ -758,7 +765,7 @@ int makeStringFromJson(int type, filecopy* filec, int offset, json* outVar)
 		retLen++;
 
 		if (filec->bytes[i + offset] == '"')
-			outVar->data.string[charIndex] = 0x22;
+			outVar->data.string[charIndex] = '"';
 		else if (filec->bytes[i + offset] == '/')
 			outVar->data.string[charIndex] = 0x5c;
 		else if (filec->bytes[i + offset] == '\\')
@@ -1068,7 +1075,11 @@ filecopy* filecopyMake(char* path)
 	filePtr = fopen(path, "r");
 	//opens the file
 
-	if(filePtr == NULL)return NULL;
+	if(filePtr == NULL)
+	{
+		printf("path \"%s\" is invalid\n", path);
+		return NULL;
+	}
 	//if the file can't be opened
 
 	fseek(filePtr, 0L, SEEK_END);
