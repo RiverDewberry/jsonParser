@@ -479,7 +479,6 @@ json* makeNodeTree(int type, filecopy* jsonfile, int start, int* len)
 	{
 		retVal->data.boolean = 1;
 		*len = 3;
-		printf("%c ", jsonfile->bytes[start + *len]);
 	}
 
 	if((type & json_FALSE) == json_FALSE)
